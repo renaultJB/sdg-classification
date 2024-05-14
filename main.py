@@ -56,6 +56,6 @@ if st.button("Submit"):
     # Display the identified SDGs in a carousel of cards
     st.write("The identified SDGs are:")
     for sdg in sdgs_list:
-        st.write(sdg)
+        st.st.json(sdg)
 
-# run the app with streamlit run main.py
+run the app with streamlit run main.py

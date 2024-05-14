@@ -2,3 +2,4 @@ langfuse
 openai
 streamlit
 trafilatura
+python-dotenv

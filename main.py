@@ -41,19 +41,30 @@ if st.button("Submit"):
         )
 
     # get json response
-    response_llm = response["choices"][0]["message"]["content"]
+    response_llm = response.choices[0].message.content
 
-    st.write(response_llm)
+    # st.write(response_llm)
 
     # Find ```JSON ... ``` in the response
     start = response_llm.find("```JSON")
     end = response_llm.find("```", start + 1)
-    response_json = json.loads(response_llm[start + 6:end])
+    # print(response_llm[start + 8:end])
+    response_json = json.loads(response_llm[start + 8:end])
 
 
     sdgs_list = response_json["labeling_results"]
 
     # Display the identified SDGs in a carousel of cards
     st.write("The identified SDGs are:")
-    for sdg in sdgs_list:
-        st.json(sdg)
+    # for sdg in sdgs_list:
+    #     st.json(sdg)
+
+    # get "sdg_code" from sdgs list of dictionaries
+    sdg_codes = ["SDG " + str(sdg["sdg_code"]) + " ⭐"*sdg["main"] + f"  ({sdg['score']}/100)" for sdg in sdgs_list]
+    tabs = st.tabs(sdg_codes)
+
+    for i, sdg in enumerate(sdgs_list):
+        tabs[i].write(f"{sdg['sdg_name']}")
+        tabs[i].write(f"{sdg['justification']}")
+        tabs[i].json(sdg, expanded=False)
+

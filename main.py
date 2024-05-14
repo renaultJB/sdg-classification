@@ -29,7 +29,6 @@ def fetch_and_parse(url):
 url = st.text_input("Enter the URL of the company's website")
 if st.button("Submit"):
     data = fetch_and_parse(url)
-    st.write(data)
     compiled_prompt = prompt.compile(input_text=data)
 
 
@@ -39,7 +38,6 @@ if st.button("Submit"):
             temperature=0,
             # response_format={"type": "json_object"},
             langfuse_prompt=prompt,
-            metadata= data["_metadata"]
         )
 
     # get json response

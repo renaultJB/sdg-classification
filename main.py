@@ -32,7 +32,7 @@ if st.button("Submit"):
     compiled_prompt = prompt.compile(input_text=data)
 
 
-    response = client.chat.completions.create(
+    completion = client.chat.completions.create(
             model="gpt-4o-2024-05-13",
             messages=compiled_prompt,
             temperature=0,
@@ -41,7 +41,7 @@ if st.button("Submit"):
         )
 
     # get json response
-    response_llm = response.choices[0].message.content
+    response_llm = completion.choices[0].message.content
 
     # st.write(response_llm)
 

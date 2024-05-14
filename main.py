@@ -45,6 +45,8 @@ if st.button("Submit"):
     # get json response
     response_llm = response["choices"][0]["message"]["content"]
 
+    st.write(response_llm)
+
     # Find ```JSON ... ``` in the response
     start = response_llm.find("```JSON")
     end = response_llm.find("```", start + 1)
@@ -56,6 +58,4 @@ if st.button("Submit"):
     # Display the identified SDGs in a carousel of cards
     st.write("The identified SDGs are:")
     for sdg in sdgs_list:
-        st.st.json(sdg)
-
-run the app with streamlit run main.py
+        st.json(sdg)

@@ -68,3 +68,8 @@ if st.button("Submit"):
         tabs[i].write(f"{sdg['justification']}")
         tabs[i].json(sdg, expanded=False)
 
+
+    # add a clear all button
+    if st.button("Clear All"):
+        st.experimental_rerun()
+    
